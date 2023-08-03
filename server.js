@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const serverless = require('serverless-http');
 
 const app = express();
 
@@ -9,6 +10,5 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "/index.html"))
 })
 
-app.listen(8080, () => {
-    console.log("Server listening to port 8080");
-})
+
+module.exports.handler = serverless(app);
